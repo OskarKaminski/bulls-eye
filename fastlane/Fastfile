@@ -25,5 +25,7 @@ platform :ios do
     )
     commit_version_bump(xcodeproj: "BullsEye.xcodeproj")
     add_git_tag
+    build_app(scheme: "BullsEye")
+    upload_to_testflight
   end
 end
