@@ -23,23 +23,14 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onHitMe(){
-//        var miss = targetValue - currentValue
-//        var message = ""
-//        if(miss < 0){
-//            miss = -miss
-//        }
-//        switch miss {
-//        case Bool(miss == 0):
-//            message = "Excelent! 200 points"
-//        case Bool(miss < 5):
-//            message = "Good! \(200 / 5 * miss) points"
-//        default:
-//            message = "Try next time"
-//        }
+        let miss = abs(targetValue - currentValue)
+        let points = 100 - miss
+        var message = "You scored \(points) points"
+        
         
         let alert = UIAlertController(
             title: "Hello, Oskar",
-            message: "The current value is \(currentValue)",
+            message: message,
             preferredStyle: .alert
         )
         let action = UIAlertAction(title: "Awesome", style: .default, handler: nil)
