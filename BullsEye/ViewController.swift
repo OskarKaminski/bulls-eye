@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     @IBAction func onHitMe(){
         let miss = abs(targetValue - currentValue)
         let points = 100 - miss
-        var message = "You scored \(points) points"
+        let message = "You scored \(points) points"
         
         
         let alert = UIAlertController(
