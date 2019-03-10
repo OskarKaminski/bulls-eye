@@ -1,1 +1,4 @@
 .idea
+BullsEye.app.*
+BullsEye.ipa
+fastlane/report.xml

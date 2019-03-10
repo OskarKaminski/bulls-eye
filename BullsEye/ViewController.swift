@@ -2,10 +2,10 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var currentValue: Int = 0
-    var targetValue: Int = 0
-    var round: Int = 1
-    var score: Int = 0
+    var currentValue = 0
+    var targetValue = 0
+    var round = 1
+    var score = 0
     
     @IBOutlet weak var outletSlider: UISlider!
     @IBOutlet weak var outletRound: UILabel!
@@ -26,10 +26,19 @@ class ViewController: UIViewController {
         let miss = abs(targetValue - currentValue)
         let points = 100 - miss
         let message = "You scored \(points) points"
+        let title: String
+        
+        if(miss == 0){
+            title = "Perfect!"
+        } else if (miss < 5) {
+            title = "You almost had it"
+        } else {
+            title = "Not even close"
+        }
         
         
         let alert = UIAlertController(
-            title: "Hello, Oskar",
+            title: title,
             message: message,
             preferredStyle: .alert
         )
@@ -52,10 +61,10 @@ class ViewController: UIViewController {
     
     func startNewRound(){
         targetValue = Int.random(in: 1...100)
-        outletTarget.text = "\(targetValue)"
+        outletTarget.text = String(targetValue)
         currentValue = 50
         outletSlider.value = Float(currentValue)
-        outletRound.text = "\(round)"
-        outletScore.text = "\(score)"
+        outletRound.text = String(round)
+        outletScore.text = String(score)
     }
 }
