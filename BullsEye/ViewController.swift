@@ -37,6 +37,9 @@ class ViewController: UIViewController {
         
         alert.addAction(action)
         
+        score += points
+        round += 1
+        
         present(alert, animated: true, completion: nil)
         startNewRound()
     }
