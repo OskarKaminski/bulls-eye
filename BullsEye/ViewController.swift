@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        startNewRound()
+        startNewGame()
     }
     
     @IBAction func onSliderMove(){
@@ -33,7 +33,7 @@ class ViewController: UIViewController {
         showAlert(title: title, message: message)
     }
     
-    @IBAction func restartGame(){
+    @IBAction func startNewGame(){
         round = 1
         score = 0
         startNewRound()
