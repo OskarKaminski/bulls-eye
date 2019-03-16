@@ -24,19 +24,33 @@ class ViewController: UIViewController {
 
     @IBAction func onHitMe(){
         let miss = abs(targetValue - currentValue)
-        let points = 100 - miss
+        let title = getTitle(miss:miss)
+        let points = calculatePoints(miss: miss)
         let message = "You scored \(points) points"
-        let title: String
         
-        if(miss == 0){
-            title = "Perfect!"
-        } else if (miss < 5) {
-            title = "You almost had it"
-        } else {
-            title = "Not even close"
+        showAlert(title: title, message: message)
+        
+        score += points
+        round += 1
+        startNewRound()
+    }
+    
+    @IBAction func restartGame(){
+        round = 1
+        score = 0
+        startNewRound()
+    }
+    
+    func calculatePoints(miss: Int) -> Int {
+        if miss == 0 {
+            return 200
+        } else if miss == 1 {
+            return 150
         }
-        
-        
+        return 100 - miss
+    }
+    
+    func showAlert(title: String, message: String){
         let alert = UIAlertController(
             title: title,
             message: message,
@@ -45,18 +59,17 @@ class ViewController: UIViewController {
         let action = UIAlertAction(title: "Awesome", style: .default, handler: nil)
         
         alert.addAction(action)
-        
-        score += points
-        round += 1
-        
         present(alert, animated: true, completion: nil)
-        startNewRound()
     }
     
-    @IBAction func restartGame(){
-        round = 1
-        score = 0
-        startNewRound()
+    func getTitle(miss: Int) -> String {
+        if(miss == 0){
+            return "Perfect!"
+        } else if (miss < 5) {
+            return "You almost had it"
+        } else {
+            return "Not even close"
+        }
     }
     
     func startNewRound(){
