@@ -28,11 +28,9 @@ class ViewController: UIViewController {
         let points = calculatePoints(miss: miss)
         let message = "You scored \(points) points"
         
-        showAlert(title: title, message: message)
-        
         score += points
         round += 1
-        startNewRound()
+        showAlert(title: title, message: message)
     }
     
     @IBAction func restartGame(){
@@ -56,7 +54,10 @@ class ViewController: UIViewController {
             message: message,
             preferredStyle: .alert
         )
-        let action = UIAlertAction(title: "Awesome", style: .default, handler: nil)
+        let action = UIAlertAction(title: "Awesome", style: .default, handler: {
+            action in
+            self.startNewRound()
+        })
         
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
